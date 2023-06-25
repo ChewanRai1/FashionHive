@@ -1,0 +1,96 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Product Details || Kinmel</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="shortcut icon" type="image/x-icon" th:href="@{~/img/favicon.ico}">
+
+	<!-- bootstrap v3.3.6 css -->
+	<link rel="stylesheet" th:href="@{~/css/bootstrap.min.css}">
+	<!-- animate css -->
+	<link rel="stylesheet" th:href="@{~/css/animate.css}">
+	<!-- jquery-ui.min css -->
+	<link rel="stylesheet" th:href="@{~/css/jquery-ui.min.css}">
+	<!-- meanmenu css -->
+	<link rel="stylesheet" th:href="@{~/css/meanmenu.min.css}">
+	<!-- owl.carousel css -->
+	<link rel="stylesheet" th:href="@{~/css/owl.carousel.css}">
+	<!-- slick css -->
+	<link rel="stylesheet" th:href="@{~/css/slick.css}">
+	<!-- font-awesome css -->
+	<link rel="stylesheet" th:href="@{~/css/font-awesome.min.css}">
+	<!-- style css -->
+	<link rel="stylesheet" th:href="@{~/css/style.css}">
+	<!-- responsive css -->
+	<link rel="stylesheet" th:href="@{~/css/responsive.css}">
+	<!-- star css -->
+	<link th:href="@{~/css/star-rating.css}" rel="stylesheet" />
+	<!-- modernizr js -->
+	<script th:src="@{~/js/vendor/modernizr-2.8.3.min.js}"></script>
+</head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+		<header class="header-pos">
+
+			<div th:replace="~{fragments/header-bottom.html :: header-bottom-area}"></div>
+
+			<div th:replace="~{fragments/mobile-menu.html :: mobile-menu}"></div>
+
+		</header>
+
+		<div th:replace="~{fragments/breadcrumb-area.html :: breadcrumb-area}"></div>
+
+		<!-- shop-area start -->
+		<div class="shop-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-9">
+						<div class="row">
+							<div class="col-md-5 col-sm-5 col-xs-12">
+								<div class="single-pro-tab-content">
+									<!-- Tab panes -->
+									<div class="tab-content">
+										<div role="tabpanel" class="tab-pane active" id="home"><a href="#"><img class="zoom" th:src="'data:image/png;base64,'+${product.product_image}" th:data-zoom-image="'data:image/png;base64,'+${product.product_image}" alt="" /></a></div>
+									</div>
+								</div>								
+							</div>
+							<div class="col-md-7 col-sm-7 col-xs-12 shop-list shop-details">								
+								<div class="product-content">
+									<h3><a th:href="@{~/product/}+${product.id}" th:text="${product.product_name}"></a></h3>
+									<div class="price">
+										<span th:text="'Rs.'+${product.product_price}+'/-'"></span>
+									</div>
+									<div class="s-p-rating">
+										<span class="rating">
+											<i class="fa fa-star" th:if="${average>=1}"></i>
+											<i class="fa fa-star-o" th:if="${average<1}"></i>
+											<i class="fa fa-star" th:if="${average>=2}"></i>
+											<i class="fa fa-star-o" th:if="${average<2}"></i>
+											<i class="fa fa-star" th:if="${average>=3}"></i>
+											<i class="fa fa-star-o" th:if="${average<3}"></i>
+											<i class="fa fa-star" th:if="${average>=4}"></i>
+											<i class="fa fa-star-o" th:if="${average<4}"></i>
+											<i class="fa fa-star" th:if="${average>=5}"></i>
+											<i class="fa fa-star-o" th:if="${average<5}"></i>
+										</span>	
+										<span class="review-no" th:text="${reviews.size()}+' Review (s)'"></span>
+									</div>
+									<p style="margin-bottom: 0;" th:text="${product.product_description}"></p>
+									<p style="margin-top: 0; margin-bottom: 0; border: none" th:text="'Size: '+${product.product_size}"></p>
+									<p style="margin-top: 0;" th:text="'Color: '+${product.product_color}"></p>
+									<div class="product-action">
+										<div class="button-top">
+											<a th:href="@{~/wishlist/add/}+${product.id}"><i class="fa fa-heart"></i></a>
+											<a th:href="@{~/cart/add/}+${product.id}"><i class="fa fa-shopping-cart"></i></a>
+										</div>
+									</div>
+								</div>							
+							</div>
+						</div>
