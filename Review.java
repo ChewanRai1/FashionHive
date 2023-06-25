@@ -18,5 +18,24 @@ public class Review {
     @GeneratedValue(generator = "kinmel_product_seq_gen", strategy = GenerationType.SEQUENCE)
     private Integer id;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id",
+            referencedColumnName = "id",
+            foreignKey = @ForeignKey(name = "FK_productId"))
+    private Product product;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id",
+            referencedColumnName = "id",
+            foreignKey = @ForeignKey(name = "FK_userId"))
+    private User user;
+
+    @Column
+    private Integer rate;
+
+    @Column
+    private String review;
+
+    @Column
+    private Date date;
 }
