@@ -41,3 +41,39 @@
 	<div th:replace="~{fragments/mobile-menu.html :: mobile-menu}"></div>
 
 </header>
+<div th:replace="~{fragments/breadcrumb-area.html :: breadcrumb-area}"></div>
+		<!-- shop-area start -->
+		<div class="shop-area">
+			<div class="container">
+				<div class="row">
+					<!-- left-sidebar start -->
+					<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+						<!-- widget-categories start -->
+						<aside class="widget widget-categories">
+							<h3 class="sidebar-title">Categories</h3>
+							<ul class="sidebar-menu">
+								<li th:each="category:${categories}"><a th:href="@{~/shop/}+${category.id}" th:text="${category.category_name}"></a></li>
+							</ul>
+						</aside>
+						<!-- widget-categories end -->
+					</div>
+					<!-- left-sidebar end -->
+					<div class="col-md-9 col-sm-12 col-xs-12">
+						<div class="shop-content">					
+							<!-- Nav tabs -->
+							<ul class="shop-tab" role="tablist">
+								<li><span class="sorting-name"> View as:  </span></li>
+								<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-th" aria-hidden="true"></i></a></li>
+								<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-th-list" aria-hidden="true"></i></a></li>
+							</ul>
+							<div class="short-by">
+								<span class="sorting-show"> Sort by:</span>
+								<select>
+									<option value="volvo">popularity</option>
+									<option value="saab">Default</option>
+									<option value="mercedes">average rating</option>
+									<option value="audi">newness</option>
+									<option value="audi">low to high</option>
+									<option value="audi">high to low</option>
+								</select>							
+							</div>
